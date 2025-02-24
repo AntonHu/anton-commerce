@@ -46,6 +46,8 @@ export const env = createEnv({
 		TRIEVE_API_KEY: process.env.TRIEVE_API_KEY,
 
 		NEXT_PUBLIC_LANGUAGE: process.env.NEXT_PUBLIC_LANGUAGE,
+
+		OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 	},
 });
 

@@ -1,10 +1,15 @@
 import { addToCartAction } from "@/actions/cart-actions";
 import { searchProducts } from "@/lib/search/search";
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI } from "@ai-sdk/openai";
 import { StreamData, streamText } from "ai";
+import { env } from "@/env.mjs";
 import { z } from "zod";
 
 export const maxDuration = 30;
+
+const openai = createOpenAI({
+	apiKey: env.OPENAI_API_KEY || '',
+});
 
 export async function POST(req: Request) {
 	const json = await req.json();

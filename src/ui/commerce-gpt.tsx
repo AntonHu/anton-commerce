@@ -63,13 +63,13 @@ export function CommerceGPT() {
 							</Button>
 						</div>
 					</div>
-					<YnsLink
+					{/* <YnsLink
 						className="bg-black rounded-full text-white px-4 py-1 text-sm"
 						href="https://github.com/yournextstore/yournextstore"
 						target="_blank"
 					>
 						View on GitHub
-					</YnsLink>
+					</YnsLink> */}
 				</div>
 			</div>
 			<div
