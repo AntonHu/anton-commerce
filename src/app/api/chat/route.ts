@@ -2,13 +2,12 @@ import { addToCartAction } from "@/actions/cart-actions";
 import { searchProducts } from "@/lib/search/search";
 import { createOpenAI } from "@ai-sdk/openai";
 import { StreamData, streamText } from "ai";
-import { env } from "@/env.mjs";
 import { z } from "zod";
 
 export const maxDuration = 30;
 
 const openai = createOpenAI({
-	apiKey: env.OPENAI_API_KEY || '',
+	apiKey: process.env.OPENAI_API_KEY || "",
 });
 
 export async function POST(req: Request) {
@@ -52,6 +51,9 @@ export async function POST(req: Request) {
 					return "OK. Done";
 				},
 			},
+		},
+		onError: (error) => {
+			streamingData.append({ operation: "error", error: error.error as string });
 		},
 		onFinish() {
 			streamingData.close();
